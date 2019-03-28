@@ -27,4 +27,4 @@ clean:
 	rm -f $(OBJS) password
 
 run:
-	./password -p ${ARGS}
+	./password -p ${PASS} -u ${USER}
