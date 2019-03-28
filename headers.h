@@ -21,6 +21,13 @@ typedef struct password {
         bool specialC;
         int length;
         bool appearList;
+        bool consecutiveNum;
+        bool repetitiveNum;
+        bool consecutiveChar;
+        bool repetitiveChar;
+        bool related;
+        char *user;
+
 } Pass;
 
 ////////////////
@@ -37,6 +44,9 @@ extern void getResults(Pass *key);
 extern float getAverage(Pass *key, float length);
 extern void getStatus(float average, char *status);
 extern void consecutiveLetters(Pass *key);
+extern void validateNum(int i, char *pass, Pass *key);
+extern void validateChar(int i, char *pass, Pass *key);
+extern void compareWithUser(Pass *key);
 
 ///////////////
 // Constants //

@@ -18,7 +18,7 @@ void searchList(Pass *key) {
 
                 strtok(buffer, "\n");
 
-                if (strcmp(key->password, buffer) == 0 || strstr(key->password, buffer)) {
+                if (strcmp(key->password, buffer) == 0 /*|| strstr(key->password, buffer) != 0*/) {
                         key->appearList = true;
                 }
         }

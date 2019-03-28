@@ -21,6 +21,11 @@ void getResults(Pass *key) {
         fprintf(stderr, "Uso de Caracteres Especiales:...%s\n", key->specialC ? "Si (100%)" : "No (0%)");
         fprintf(stderr, "Longitud:.......................%2d (%.0f%s)\n", key->length, length, "%");
         fprintf(stderr, "Aparece en Listas...............%s\n", key->appearList ? "Si (0%)" : "No (100%)");
+        fprintf(stderr, "Numeros Consecutivos............%s\n", key->consecutiveNum ? "Si (0%)" : "No (100%)");
+        fprintf(stderr, "Numeros Repetitivos.............%s\n", key->repetitiveNum ? "Si (0%)" : "No (100%)");
+        fprintf(stderr, "Letras Consecutivas.............%s\n", key->consecutiveChar ? "Si (0%)" : "No (100%)");
+        fprintf(stderr, "Letras Repetitivas..............%s\n", key->repetitiveChar ? "Si (0%)" : "No (100%)");
+        fprintf(stderr, "Relacionado con Usuario.........%s\n", key->related ? "Si (0%)" : "No (100%)");
         fprintf(stderr, "\nPromedio: %.2f (%s)\n\n", average, status);
 }
 
@@ -47,9 +52,20 @@ float getAverage(Pass *key, float length) {
                 sum += 100;
         }
 
+        if (key->specialC) {
+                sum += 100;
+        }
+
+        if (key->consecutiveNum
+            || key->repetitiveNum
+            || key->consecutiveChar
+            || key->repetitiveChar) {
+                sum += 100;
+        }
+
         sum += length;
 
-        average = sum / 6;
+        average = sum / 8;
 
         return average;
 }
