@@ -42,7 +42,7 @@ extern void validateCharacters(Pass *key);
 extern void searchList(Pass *key);
 extern void getResults(Pass *key);
 extern float getAverage(Pass *key, float length);
-extern void getStatus(float average, char *status);
+extern void getStatus(int average, char *status);
 extern void consecutiveLetters(Pass *key);
 extern void validateNum(int i, char *pass, Pass *key);
 extern void validateChar(int i, char *pass, Pass *key);

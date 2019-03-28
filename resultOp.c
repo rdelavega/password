@@ -12,7 +12,7 @@ void getResults(Pass *key) {
         }
 
         average = getAverage(key, length);
-        getStatus(average, status);
+        getStatus((int)average, status);
 
         fprintf(stderr, "\n\n\tPassword: %s\n\n", key->password);
         fprintf(stderr, "Uso de Mayusculas:..............%s\n", key->upperCase ? "Si (100%)" : "No (0%)");
@@ -22,9 +22,9 @@ void getResults(Pass *key) {
         fprintf(stderr, "Longitud:.......................%2d (%.0f%s)\n", key->length, length, "%");
         fprintf(stderr, "Aparece en Listas...............%s\n", key->appearList ? "Si (0%)" : "No (100%)");
         fprintf(stderr, "Numeros Consecutivos............%s\n", key->consecutiveNum ? "Si (0%)" : "No (100%)");
-        fprintf(stderr, "Numeros Repetitivos.............%s\n", key->repetitiveNum ? "Si (0%)" : "No (100%)");
+        fprintf(stderr, "Numeros Repetidos...............%s\n", key->repetitiveNum ? "Si (0%)" : "No (100%)");
         fprintf(stderr, "Letras Consecutivas.............%s\n", key->consecutiveChar ? "Si (0%)" : "No (100%)");
-        fprintf(stderr, "Letras Repetitivas..............%s\n", key->repetitiveChar ? "Si (0%)" : "No (100%)");
+        fprintf(stderr, "Letras Repetidas................%s\n", key->repetitiveChar ? "Si (0%)" : "No (100%)");
         fprintf(stderr, "Relacionado con Usuario.........%s\n", key->related ? "Si (0%)" : "No (100%)");
         fprintf(stderr, "\nPromedio: %.2f (%s)\n\n", average, status);
 }
@@ -63,6 +63,10 @@ float getAverage(Pass *key, float length) {
                 sum += 100;
         }
 
+        if (!key->related) {
+                sum += 100;
+        }
+
         sum += length;
 
         average = sum / 8;
@@ -70,7 +74,8 @@ float getAverage(Pass *key, float length) {
         return average;
 }
 
-void getStatus(float average, char *status) {
+void getStatus(int average, char *status) {
+
         if (average >= 0 && average < 20) {
                 strcpy(status,"Riesgo");
         } else if (average >= 20 && average < 39) {
