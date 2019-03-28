@@ -1,5 +1,12 @@
 #include "headers.h"
 
+/*************************************************************************
+* Determinar que expresion regular sera comparada, asi como manejar los *
+* resultados una vez obtenidos.                                         *
+*                                                                       *
+* @param key   struct password                                          *
+*************************************************************************/
+
 void setResultsREGEX(Pass *key) {
         char *compare[3] = {
                 "([a-z])",
@@ -30,6 +37,13 @@ void setResultsREGEX(Pass *key) {
         }
 }
 
+/******************************************************************
+* Iniciar REGEX y asignar que expresion regular se va a comparar *
+*                                                                *
+* @param compare   expresion                                     *
+* @param test      REGEX                                         *
+******************************************************************/
+
 void initREGEX(char *compare, regex_t *test) {
         int status = regcomp (test, compare, REG_EXTENDED|REG_NEWLINE);
 
@@ -41,6 +55,14 @@ void initREGEX(char *compare, regex_t *test) {
         }
 
 }
+
+/************************************************************************
+* Buscar coincidencia de expresion regular y la contraseña introducida *
+*                                                                      *
+* @param  password   Contrasena                                        *
+* @param  test       REGEX                                             *
+* @return            true if contains                                  *
+************************************************************************/
 
 bool execREGEX(char *password, regex_t *test) {
         const char *pass = password;

@@ -1,5 +1,13 @@
 #include "headers.h"
 
+/**************************************************************
+* Manejara los reusltados obtenidos a lo largo del programa, *
+* los cuales fueron guardados en key, para mostarlos al      *
+* usuario.                                                   *
+*                                                            *
+* @param key struct tipo password                            *
+**************************************************************/
+
 void getResults(Pass *key) {
         // printf("%s\n", key->appearList ? "true" : "false");
         float average = 0.0, length = 0.0;
@@ -28,6 +36,15 @@ void getResults(Pass *key) {
         fprintf(stderr, "Relacionado con Usuario.........%s\n", key->related ? "Si (0%)" : "No (100%)");
         fprintf(stderr, "\nPromedio: %.2f (%s)\n\n", average, status);
 }
+
+/********************************************************************
+* Calcula el porcentaje final de seguridad que tiene la contraseña *
+* introducida                                                      *
+*                                                                  *
+* @param  key      struct password                                 *
+* @param  length   lonfitud de contraseña                          *
+* @return  porcentaje final                                        *
+********************************************************************/
 
 float getAverage(Pass *key, float length) {
         float sum = 0.0, average = 0.0;
@@ -73,6 +90,14 @@ float getAverage(Pass *key, float length) {
 
         return average;
 }
+
+/*****************************************************************
+* Asigna un status tipo string segun el porcentaje de seguridad *
+* obtenido en la contraseña.                                    *
+*                                                               *
+* @param average porcentaje final                               *
+* @param status  "Calificacion"                                 *
+*****************************************************************/
 
 void getStatus(int average, char *status) {
 
