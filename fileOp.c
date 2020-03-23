@@ -10,32 +10,32 @@
 *******************************************************************************/
 
 void searchList(Pass *key) {
-        char *buffer = NULL;
-        size_t buffer_size = 0;
-        ssize_t length;
+    char *buffer = NULL;
+    size_t buffer_size = 0;
+    ssize_t length;
 
-        FILE *file = fopen("passwordList.txt", "r");
+    FILE *file = fopen("passwordList.txt", "r");
 
-        if (!file) {
-                fprintf(stderr, "Error archivo\n");
+    if (!file) {
+        fprintf(stderr, "Error archivo\n");
+    }
+
+    length = getline(&buffer, &buffer_size, file);
+
+    while (length >= 0) {
+        length = getline(&buffer, &buffer_size, file);// Leer linea completa
+
+        strtok(buffer, "\n");// Eliminar salto de,linea
+
+        if (strcmp(key->password, buffer) == 0 /*|| strstr(key->password, buffer) != 0*/) {
+            key->appearList = true;
         }
+    }
 
-        length = getline(&buffer, &buffer_size, file);
+    free(buffer);
+    buffer = NULL;
 
-        while (length >= 0) {
-                length = getline(&buffer,&buffer_size, file);// Leer linea completa
+    fclose(file);
 
-                strtok(buffer, "\n");// Eliminar salto de,linea
-
-                if (strcmp(key->password, buffer) == 0 /*|| strstr(key->password, buffer) != 0*/) {
-                        key->appearList = true;
-                }
-        }
-
-        free(buffer);
-        buffer = NULL;
-
-        fclose(file);
-
-        // printf("%s\n", key->appearList ? "true" : "false");
+    // printf("%s\n", key->appearList ? "true" : "false");
 }
