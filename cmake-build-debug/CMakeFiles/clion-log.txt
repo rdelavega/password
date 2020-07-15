@@ -1,4 +1,0 @@
-"/Users/ricardodelavegabarron/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/201.7846.88/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/ricardodelavegabarron/Projects/ibero/password
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/ricardodelavegabarron/Projects/ibero/password/cmake-build-debug
